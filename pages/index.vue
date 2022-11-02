@@ -1,5 +1,5 @@
 <template>
-  <Tutorial />
+  <h1>HEllo</h1>
 </template>
 
 <script lang="ts">
@@ -9,3 +9,9 @@ export default Vue.extend({
   name: 'IndexPage'
 })
 </script>
+
+<style lang="scss" scoped>
+h1 {
+  color: $mint;
+}
+</style>
