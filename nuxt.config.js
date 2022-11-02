@@ -1,7 +1,9 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-
+  server: {
+    port: 8000 // default: 3000
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'ks-interactive',
@@ -20,11 +22,12 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
+  css: ['@/assets/styles/index.scss'],
   styleResources: {
     scss: [
-      '~/assets/styles/index.scss'
+      '~/assets/styles/_colors.scss',
+      '~/assets/styles/_utils.scss',
+      '~/assets/styles/_variables.scss'
     ]
   },
 
@@ -40,13 +43,12 @@ export default {
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     '@nuxtjs/composition-api/module',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
   ],
-
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     loaders: {

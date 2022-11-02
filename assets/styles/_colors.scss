@@ -1,5 +1,9 @@
-$primary: #1D1D20;
-$light: #F2FDFF;
+$dark: #1D1D20;
+$light: #efefef;
 $pink: #DA70D6;
 $blue: #1A8FE3;
 $mint: #42B883;
+
+body {
+  background-color: $light;
+}

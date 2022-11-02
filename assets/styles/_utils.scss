@@ -1,0 +1,15 @@
+@import "./variables";
+
+.container {
+  margin: 0px auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @media (min-width: $breakpoint-md) {
+    padding: 0 40px;
+  }
+}
+
+.component-wrapper {
+  display: contents;
+}
