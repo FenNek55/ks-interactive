@@ -1,13 +1,21 @@
 <template>
-  <section class="about">
-    <main class="container">
-      <h1>_about me<span class="about__dott"></span></h1>
-      <p>My name is Karol and I'm a programmer with great passion for web technologies and more than {{ yearsWorked }}
-        years of experience. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam,
-        aperiam provident numquam placeat iure officia voluptatum voluptatem ullam sit quae facere architecto quibusdam
-        corrupti accusamus beatae velit ex! Rerum, veritatis.</p>
-    </main>
-  </section>
+  <main class="container about">
+    <h1 class="about__title">_about me<span class="about__dott"></span></h1>
+    <p class="about__paragraph">My name is Karol and I'm a programmer with great passion for web technologies and {{
+        yearsWorked
+    }}+
+      years of experience. I enjoy learning new technologies and using them in my projects in order to deliver best
+      possible
+      solutions.</p>
+    <div class="about__quote">
+      <q class="about__quoted">Try to learn something about everything and everything about something.</q> <br>~
+      Thomas
+      Huxley
+    </div>
+    <div class="about__corner-wrapper">
+      <div class="about__corner"></div>
+    </div>
+  </main>
 </template>
 
 <script lang="ts" setup>
@@ -19,6 +27,11 @@ const yearsWorked = new Date().getFullYear() - yearWorkingSince
 .about {
   padding: 180px 0;
 
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__dott {
     margin-left: 6px;
     $size: 12px;
@@ -27,6 +40,54 @@ const yearsWorked = new Date().getFullYear() - yearWorkingSince
     width: $size;
     height: $size;
     border-radius: $size;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__paragraph {
+    margin-bottom: 24px;
+    padding-right: 24px;
+    font-size: 26px;
+  }
+
+  &__quote {
+    position: relative;
+    margin-bottom: 80px;
+    font-size: 1.2rem;
+    color: $dimmed;
+  }
+
+  &__corner-wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__corner {
+    position: relative;
+    right: 0;
+    bottom: 0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100px;
+      height: 30px;
+      background-color: $dark;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 30px;
+      height: 100px;
+      background-color: $dark;
+    }
   }
 }
 </style>
