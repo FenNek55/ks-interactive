@@ -1,5 +1,15 @@
 @import "./variables";
 
+@mixin dott($color) {
+  margin-left: 6px;
+  $size: 12px;
+  display: inline-block;
+  background-color: $color;
+  width: $size;
+  height: $size;
+  border-radius: $size;
+}
+
 .container {
   margin: 0px auto;
   max-width: 1020px;

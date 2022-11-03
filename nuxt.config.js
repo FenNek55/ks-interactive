@@ -2,7 +2,7 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   server: {
-    port: 8000 // default: 3000
+    port: 3030 // default: 3000
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -58,6 +58,6 @@ export default {
       scss: {
         implementation: require('sass')
       }
-    }
+    },
   }
 }

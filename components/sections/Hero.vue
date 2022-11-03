@@ -14,11 +14,12 @@
 <style lang="scss" scoped>
 .hero {
   position: relative;
-  padding: 200px 0;
+  padding: 260px 0 200px 0;
   color: $light;
   background-color: $dark;
 
   &__grid {
+    z-index: 1000;
     display: grid;
     grid-template-columns: 1fr;
 
