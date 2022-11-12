@@ -3,3 +3,8 @@
 @import "./reset";
 @import "./fonts";
 @import "./variables";
+
+body {
+  color: $dark;
+  background-color: $light;
+}
