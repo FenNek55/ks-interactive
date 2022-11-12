@@ -1,41 +1,48 @@
 <template>
   <section class="hero">
-    <div class="container hero__grid">
-      <div class="hero__left">
-      </div>
-      <div class="hero__right">
-        <h1 class="hero__title">_Hi, Karol here</h1>
-        <p class="hero__subtitle">I use Nuxt to make awesome projects</p>
-      </div>
+    <div class="hero__content">
+      <h1 class="hero__title">
+        _hello<br>my name<br>is Karol
+      </h1>
+      <p class="hero__subtitle">
+        I use <span class="hero__skill">Nuxt.js</span> to create awesome solutions
+      </p>
     </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
 .hero {
-  position: relative;
-  padding: 260px 0 200px 0;
   color: $light;
   background-color: $dark;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 
-  &__grid {
-    z-index: 1000;
-    display: grid;
-    grid-template-columns: 1fr;
+  &__spacer {
+    height: 100vh;
+  }
 
-    @media(min-width: $breakpoint-md) {
-      grid-template-columns: 1fr 1fr;
-    }
+  &__content {
+    text-align: right;
+    margin-right: 64px;
   }
 
   &__title {
-    margin-bottom: 20px;
+    font-size: $font-size-title;
+    font-weight: 900;
+    line-height: 105.5%;
   }
 
   &__subtitle {
-    letter-spacing: 2px;
-    font-size: 18px;
-    font-weight: 400;
+    font-size: 20px;
+    font-weight: 200;
+    letter-spacing: 0.2em;
+  }
+
+  &__skill {
+    color: $mint;
   }
 }
 </style>

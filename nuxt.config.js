@@ -43,7 +43,7 @@ export default {
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     '@nuxtjs/composition-api/module',
-    '@nuxtjs/style-resources',
+    '@nuxtjs/style-resources'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -58,6 +58,12 @@ export default {
       scss: {
         implementation: require('sass')
       }
-    },
+    }
+  },
+  watchers: {
+    webpack: {
+      aggregateTimeout: 300,
+      poll: 1000
+    }
   }
 }
