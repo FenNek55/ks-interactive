@@ -1,13 +1,18 @@
 @import "./variables";
 
 @mixin dott($color) {
-  margin-left: 22px;
-  $size: 32px;
+  margin-left: 6px;
   display: inline-block;
   background-color: $color;
-  width: $size;
-  height: $size;
-  border-radius: $size;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+
+  @media (min-width: $breakpoint-md) {
+    margin-left: 22px;
+    width: 32px;
+    height: 32px;
+  }
 }
 
 .container {
@@ -20,6 +25,20 @@
   }
 }
 
+.form-container {
+  @extend .container;
+
+  max-width: 600px;
+}
+
 .component-wrapper {
   display: contents;
+}
+
+.xs-only {
+  display: inherit;
+
+  @media (min-width: $breakpoint-sm) {
+    display: none;
+  }
 }

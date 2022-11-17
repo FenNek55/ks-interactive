@@ -38,8 +38,8 @@
 </template>
 
 <script lang="ts" setup>
-import SkillCardLarge from '../SkillCardLarge.vue'
-import SkillCardSmall from '../SkillCardSmall.vue'
+import SkillCardLarge from './SkillCardLarge.vue'
+import SkillCardSmall from './SkillCardSmall.vue'
 import skills from '@/utils/skills'
 
 const logoTeamwork = require('@/assets/images/group.svg')
@@ -50,15 +50,16 @@ const logoGraph = require('@/assets/images/graph.svg')
 
 <style lang="scss" scoped>
 .skills {
-  padding-bottom: 240px;
+  padding-top: calc($section-spacing / 2);
+  padding-bottom: $section-spacing;
 
   &__dott {
     @include dott($blue);
   }
 
   &__title {
-    font-size: $font-size-title;
-    font-weight: 900;
+    @extend .section-title;
+
     margin-bottom: 42px;
     text-align: right;
   }
@@ -71,14 +72,34 @@ const logoGraph = require('@/assets/images/graph.svg')
     &--big {
       @extend .skills__grid;
 
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
       margin-bottom: 20px;
+
+      @media(min-width: $breakpoint-sm) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media(min-width: $breakpoint-lg) {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
     &--small {
       @extend .skills__grid;
 
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+
+      @media(min-width: $breakpoint-sm) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @media(min-width: $breakpoint-md) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      @media(min-width: $breakpoint-lg) {
+        grid-template-columns: repeat(6, 1fr);
+      }
     }
   }
 

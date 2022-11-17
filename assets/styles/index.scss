@@ -1,10 +1,6 @@
 @import "./colors";
 @import "./utils";
 @import "./reset";
-@import "./fonts";
+@import "./gfonts";
 @import "./variables";
-
-body {
-  color: $dark;
-  background-color: $light;
-}
+@import "./fonts";

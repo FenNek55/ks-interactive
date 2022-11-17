@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&family=Source+Sans+Pro:wght@200;300;400;600;700&display=swap');
+@import './variables';
 
 .font-paragraph {
   font-family: 'Source Sans Pro', sans-serif;
@@ -8,8 +8,26 @@
   font-family: 'Raleway', sans-serif;
 }
 
+.section-title {
+  font-size: $font-size-title;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  word-wrap: break-word;
+
+  @media(min-width: $breakpoint-md) {
+    font-size: $font-size-title-md;
+  }
+
+  @media(min-width: $breakpoint-lg) {
+    font-size: $font-size-title-lg;
+  }
+}
+
 body {
   @extend .font-header;
+
+  color: $dark;
+  background-color: $light;
 }
 
 p {

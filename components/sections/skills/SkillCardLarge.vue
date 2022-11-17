@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts" setup>
-import BaseCard from './BaseCard.vue'
+import BaseCard from '../../BaseCard.vue'
 
 interface Props {
   icon: string

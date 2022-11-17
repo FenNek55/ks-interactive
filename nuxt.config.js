@@ -27,7 +27,8 @@ export default {
     scss: [
       '~/assets/styles/_colors.scss',
       '~/assets/styles/_utils.scss',
-      '~/assets/styles/_variables.scss'
+      '~/assets/styles/_variables.scss',
+      '~/assets/styles/_fonts.scss'
     ]
   },
 
@@ -48,6 +49,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios'
   ],
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

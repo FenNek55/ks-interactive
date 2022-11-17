@@ -13,6 +13,7 @@
 
 <script lang="ts" setup>
 import { computed } from '@nuxtjs/composition-api'
+import BaseCard from '../../BaseCard.vue'
 interface Props {
   icon: string,
   name: string,
@@ -30,7 +31,7 @@ const iconAlt = computed(() => {
 .skill-small {
   padding-top: 100%;
   position: relative;
-  transition: 0.2s;
+  transition: transform 0.2s, box-shadow 0.05s;
   user-select: none;
 
   &:hover {
@@ -48,25 +49,42 @@ const iconAlt = computed(() => {
     left: 0;
     width: 100%;
     height: 100%;
-    padding-top: 28px;
+    padding-top: 20%;
   }
 
   &__icon-wrapper {
+    position: relative;
     display: flex;
     align-items: center;
-    height: 64px;
-    width: 64px;
+    justify-content: center;
+    width: 50%;
+    height: 50%;
     margin-bottom: 8px;
   }
 
   &__icon {
-    max-height: 64px;
-    max-width: 64px;
+    width: 80%;
+
+    @media (min-width: $breakpoint-lg) {
+      max-height: 64px;
+    }
   }
 
   &__name {
-    font-size: 16px;
+    font-size: 6vw;
     font-weight: 400;
+
+    @media(min-width: $breakpoint-sm) {
+      font-size: 4vw;
+    }
+
+    @media(min-width: $breakpoint-md) {
+      font-size: 3vw;
+    }
+
+    @media(min-width: $breakpoint-lg) {
+      font-size: 16px;
+    }
   }
 }
 </style>

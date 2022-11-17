@@ -15,9 +15,13 @@
       <p class="about__paragraph">
         During my career, I’ve had lots of great opportunities to expand my knowledge and share it with many amazing people. I believe that coding is not a zero-sum game, which is especially important in a constantly evolving environment of web technology
       </p>
-      <div class="about__quote">
-        <q class="about__quoted">Try to learn something about everything and everything about something.</q>
-        <br>~ Thomas Huxley
+      <div class="about__quote-wrapper">
+        <div class="about__quote">
+          Try to learn something about everything and everything about <span class="about__quote-weld">something.<span class="about__swoosh-wrapper"><img class="about__swoosh" src="@/assets/images/quote-swoosh.svg"></span></span>
+        </div>
+        <div class="about__quote-author">
+          ~ Thomas Huxley
+        </div>
       </div>
       <div class="about__corner-wrapper">
         <div class="about__corner" />
@@ -33,8 +37,8 @@ const yearsWorked = new Date().getFullYear() - yearWorkingSince
 
 <style lang="scss" scoped>
 .about {
-  padding-top: 240px;
-  margin-bottom: 240px;
+  padding-top: $section-spacing;
+  padding-bottom: calc($section-spacing / 2);
   background-color: $light;
 
   &__dott {
@@ -42,8 +46,8 @@ const yearsWorked = new Date().getFullYear() - yearWorkingSince
   }
 
   &__title {
-    font-size: $font-size-title;
-    font-weight: 900;
+    @extend .section-title;
+
     margin-bottom: 42px;
   }
 
@@ -53,26 +57,41 @@ const yearsWorked = new Date().getFullYear() - yearWorkingSince
     font-size: 26px;
   }
 
-  &__quote {
+  &__quote-wrapper {
     position: relative;
     margin-bottom: 80px;
+    margin-right: 50px;
     font-size: 20px;
     color: $dimmed;
     font-weight: 300;
-    display: inline-block;
+
+    @media(min-width: $breakpoint-lg) {
+      max-width: none;
+    }
   }
 
-  &__quoted {
-    &::after {
-      position: absolute;
-      top: 0;
-      right: -86px;
-      display: block;
-      content: '';
-      width: 80px;
-      height: 36px;
-      background-image: url('~/assets/images/quote-swoosh.svg');
-    }
+  &__quote {
+    display: inline-block;
+    vertical-align: bottom;
+    margin-bottom: 12px;
+  }
+
+  &__quote-weld {
+    white-space: nowrap;
+  }
+
+  &__swoosh {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 36px;
+    display: inline;
+    max-width: none;
+  }
+
+  &__swoosh-wrapper {
+    position: relative;
   }
 
   &__corner-wrapper {

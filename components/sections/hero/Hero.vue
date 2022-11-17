@@ -20,18 +20,14 @@
   align-items: center;
   justify-content: flex-end;
 
-  &__spacer {
-    height: 100vh;
-  }
-
   &__content {
     text-align: right;
     margin-right: 64px;
   }
 
   &__title {
-    font-size: $font-size-title;
-    font-weight: 900;
+    @extend .section-title;
+
     line-height: 105.5%;
   }
 
