@@ -1,29 +1,31 @@
 <template>
   <section class="about">
     <main class="container">
-      <h1 class="about__title">
+      <h1 ref="title" class="about__title">
         _about me<span class="about__dott" />
       </h1>
-      <p class="about__paragraph">
-        My name is Karol and I'm a programmer with great passion for web development and {{
-          yearsWorked
-        }}+
-        years of experience. I enjoy learning new technologies and using them in my projects in order to deliver best
-        possible
-        solutions.
-      </p>
-      <p class="about__paragraph">
-        During my career, I’ve had lots of great opportunities to expand my knowledge and share it with many amazing people. I believe that coding is not a zero-sum game, which is especially important in a constantly evolving environment of web technology
-      </p>
-      <div class="about__quote-wrapper">
-        <q class="about__quote">
-          Try to learn something about everything and everything about <span class="about__quote-weld">something.<span class="about__swoosh-wrapper"><img class="about__swoosh" src="@/assets/images/quote-swoosh.svg"></span></span>
-        </q>
-        <div class="about__quote-author">
-          ~ Thomas Huxley
+      <div ref="textWrapper" class="about__text">
+        <p class="about__paragraph">
+          My name is Karol and I'm a programmer with great passion for web development and {{
+            yearsWorked
+          }}+
+          years of experience. I enjoy learning new technologies and using them in my projects in order to deliver best
+          possible
+          solutions.
+        </p>
+        <p class="about__paragraph">
+          During my career, I’ve had lots of great opportunities to expand my knowledge and share it with many amazing people. I believe that coding is not a zero-sum game, which is especially important in a constantly evolving environment of web technology
+        </p>
+        <div class="about__quote-wrapper">
+          <q class="about__quote">
+            Try to learn something about everything and everything about <span class="about__quote-weld">something.<span class="about__swoosh-wrapper"><img class="about__swoosh" src="@/assets/images/quote-swoosh.svg"></span></span>
+          </q>
+          <div class="about__quote-author">
+            ~ Thomas Huxley
+          </div>
         </div>
       </div>
-      <div class="about__corner-wrapper">
+      <div ref="corner" class="about__corner-wrapper">
         <div class="about__corner" />
       </div>
     </main>
@@ -31,8 +33,41 @@
 </template>
 
 <script lang="ts" setup>
+import { gsap } from 'gsap'
+import { onMounted, ref } from '@nuxtjs/composition-api'
+
+const title = ref(null)
+const corner = ref(null)
+const textWrapper = ref<HTMLElement | null>(null)
+
 const yearWorkingSince = new Date('2017-01-01').getFullYear()
 const yearsWorked = new Date().getFullYear() - yearWorkingSince
+
+onMounted(() => {
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: title.value,
+      start: 'top 50%'
+    }
+  })
+
+  tl.from(title.value, {
+    x: -60,
+    opacity: 0,
+    duration: 1.4
+  })
+    .from(corner.value, {
+      x: 60,
+      opacity: 0,
+      duration: 1.4
+    }, 0).from(textWrapper.value && textWrapper.value.children, {
+      y: 50,
+      opacity: 0,
+      duration: 1.2,
+      stagger: 0.4,
+      delay: -0.4
+    }, 1)
+})
 </script>
 
 <style lang="scss" scoped>

@@ -1,10 +1,10 @@
 <template>
   <section class="skills">
     <main class="container">
-      <h1 class="skills__title">
+      <h1 ref="title" class="skills__title">
         _skills<span class="skills__dott" />
       </h1>
-      <div class="skills__grid--big">
+      <div ref="gridBig" class="skills__grid--big">
         <SkillCardLarge :icon="logoTeamwork">
           <template #heading>
             teamwork
@@ -30,7 +30,7 @@
           </template>
         </SkillCardLarge>
       </div>
-      <div class="skills__grid--small">
+      <div ref="gridSmall" class="skills__grid--small">
         <SkillCardSmall v-for="skill in skills" :key="skill.name" :icon="skill.icon" :name="skill.name" :link="skill.link" />
       </div>
     </main>
@@ -38,6 +38,8 @@
 </template>
 
 <script lang="ts" setup>
+import { ref, onMounted } from '@nuxtjs/composition-api'
+import { gsap } from 'gsap'
 import SkillCardLarge from './SkillCardLarge.vue'
 import SkillCardSmall from './SkillCardSmall.vue'
 import skills from '@/utils/skills'
@@ -46,6 +48,37 @@ const logoTeamwork = require('@/assets/images/group.svg')
 const logoKnowledge = require('@/assets/images/lightbulb.svg')
 const logoGraph = require('@/assets/images/graph.svg')
 
+const title = ref(null)
+const gridBig = ref<HTMLElement | null>(null)
+const gridSmall = ref<HTMLElement | null>(null)
+
+onMounted(() => {
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: title.value,
+      start: 'top 50%'
+    }
+  })
+
+  tl.from(title.value, {
+    x: 60,
+    opacity: 0,
+    duration: 1.4
+  })
+    .from(gridBig.value && gridBig.value.children, {
+      y: -20,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.3,
+      delay: -0.5
+    })
+    .from(gridSmall.value && gridSmall.value.children, {
+      y: -20,
+      opacity: 0,
+      stagger: 0.15,
+      delay: -0.6
+    })
+})
 </script>
 
 <style lang="scss" scoped>

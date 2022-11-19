@@ -4,12 +4,14 @@
       <h1 class="hero__title">
         _hello<br>my name<br>is Karol
       </h1>
-      <p class="hero__subtitle">
-        I use <span class="hero__skill">Nuxt.js</span> to create awesome solutions
-      </p>
+      <HeroSkills />
     </div>
   </section>
 </template>
+
+<script lang="ts" setup>
+import HeroSkills from './HeroSkills.vue'
+</script>
 
 <style lang="scss" scoped>
 .hero {
@@ -30,16 +32,6 @@
     @extend .section-title;
 
     line-height: 105.5%;
-  }
-
-  &__subtitle {
-    font-size: 20px;
-    font-weight: 200;
-    letter-spacing: 0.2em;
-  }
-
-  &__skill {
-    color: $mint;
   }
 }
 </style>

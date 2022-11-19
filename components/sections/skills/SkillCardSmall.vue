@@ -1,14 +1,16 @@
 <template>
-  <BaseCard class="skill-small" :link="props.link">
-    <div class="skill-small__content">
-      <div class="skill-small__icon-wrapper">
-        <img class="skill-small__icon" :src="props.icon" :alt="iconAlt">
+  <div class="skill-small__wrapper">
+    <BaseCard class="skill-small" :link="props.link">
+      <div class="skill-small__content">
+        <div class="skill-small__icon-wrapper">
+          <img class="skill-small__icon" :src="props.icon" :alt="iconAlt">
+        </div>
+        <h2 class="skill-small__name">
+          {{ props.name }}
+        </h2>
       </div>
-      <h2 class="skill-small__name">
-        {{ props.name }}
-      </h2>
-    </div>
-  </BaseCard>
+    </BaseCard>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -50,6 +52,10 @@ const iconAlt = computed(() => {
     width: 100%;
     height: 100%;
     padding-top: 20%;
+  }
+
+  &__wrapper {
+    display: flex;
   }
 
   &__icon-wrapper {

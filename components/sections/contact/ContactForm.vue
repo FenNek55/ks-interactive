@@ -182,7 +182,7 @@ const handleSubmit = async (e: Event) => {
     }
   }).catch((error) => {
     requestStatus.value = 'error'
-    console.log(error)
+    console.error(error)
   })
 }
 </script>
