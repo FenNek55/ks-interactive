@@ -174,17 +174,16 @@ const handleSubmit = async (e: Event) => {
     access_key: 'abd5280c-f5f1-43cb-a79a-6f1e424430c8'
   }
 
-  axios.post('https://api.web3forms.com/submit', data).then((response) => {
+  axios.post('https://api.web3forms.com/submit', data, { timeout: 20000 }).then((response) => {
     if (response.status === 200) {
       requestStatus.value = 'success'
     } else {
       requestStatus.value = 'error'
     }
+  }).catch((error) => {
+    requestStatus.value = 'error'
+    console.log(error)
   })
-
-  // delay(2000).then(() => {
-  //   requestStatus.value = 'success'
-  // })
 }
 </script>
 
