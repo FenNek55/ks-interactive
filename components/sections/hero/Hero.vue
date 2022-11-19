@@ -1,6 +1,6 @@
 <template>
   <section class="hero">
-    <div class="hero__content">
+    <div class="hero__content wide-container">
       <h1 class="hero__title">
         _hello<br>my name<br>is Karol
       </h1>
@@ -16,13 +16,14 @@
   color: $light;
   background-color: $dark;
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
 
   &__content {
+    display: flex;
+    flex-direction: column;
     text-align: right;
-    margin-right: 64px;
+    justify-content: center;
+    height: 100%;
+    min-height: 100%;
   }
 
   &__title {

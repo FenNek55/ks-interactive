@@ -5,7 +5,7 @@
         _about me<span class="about__dott" />
       </h1>
       <p class="about__paragraph">
-        My name is Karol and I'm a programmer with great passion for web technologies and {{
+        My name is Karol and I'm a programmer with great passion for web development and {{
           yearsWorked
         }}+
         years of experience. I enjoy learning new technologies and using them in my projects in order to deliver best
@@ -16,9 +16,9 @@
         During my career, I’ve had lots of great opportunities to expand my knowledge and share it with many amazing people. I believe that coding is not a zero-sum game, which is especially important in a constantly evolving environment of web technology
       </p>
       <div class="about__quote-wrapper">
-        <div class="about__quote">
+        <q class="about__quote">
           Try to learn something about everything and everything about <span class="about__quote-weld">something.<span class="about__swoosh-wrapper"><img class="about__swoosh" src="@/assets/images/quote-swoosh.svg"></span></span>
-        </div>
+        </q>
         <div class="about__quote-author">
           ~ Thomas Huxley
         </div>

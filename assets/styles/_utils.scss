@@ -31,6 +31,12 @@
   max-width: 600px;
 }
 
+.wide-container {
+  @extend .container;
+
+  max-width: 1400px;
+}
+
 .component-wrapper {
   display: contents;
 }
