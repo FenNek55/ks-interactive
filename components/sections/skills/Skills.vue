@@ -85,6 +85,8 @@ onMounted(() => {
 .skills {
   padding-top: calc($section-spacing / 2);
   padding-bottom: $section-spacing;
+  background-color: $light;
+  overflow: hidden;
 
   &__dott {
     @include dott($blue);

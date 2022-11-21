@@ -26,9 +26,13 @@ import CanvasBacground from '@/components/background/CanvasBackground.vue'
     display: flex;
     flex-direction: column;
     text-align: right;
-    justify-content: center;
     height: 100%;
     min-height: 100%;
+    padding-top: 156px;
+
+    @media (min-width: $breakpoint-lg){
+      justify-content: center;
+    }
   }
 
   &__title {

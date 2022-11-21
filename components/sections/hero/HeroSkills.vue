@@ -33,11 +33,14 @@ const intervalTimeout = 4500
 
 const setNextSkill = () => {
   const nextElementWidth = nextEl.value ? parseInt(getComputedProperty(nextEl.value, 'width').slice(0, -2), 10) : 0
-  gsap.to(wrapperEl.value, { width: nextElementWidth, duration: animationDuration })
+
   const tl = gsap.timeline()
-  tl.to(skillEl.value, { y: -25, opacity: 0, duration: animationDuration }, 0)
-    .to(nextEl.value, { y: -25, opacity: 1, duration: animationDuration }, 0)
+  gsap.to(wrapperEl.value, { width: nextElementWidth, duration: animationDuration })
+  tl.fromTo(skillEl.value, { y: 0, opacity: 1 }, { y: -25, opacity: 0, duration: animationDuration }, 0)
+    .fromTo(nextEl.value, { y: 0, opacity: 0 }, { y: -25, opacity: 1, duration: animationDuration }, 0)
     .then(() => {
+      tl.revert()
+
       if (currentSkillIndex.value === skills.length - 2) {
         currentSkillIndex.value += 1
         currentSkill.value = skills[currentSkillIndex.value].name
@@ -51,7 +54,6 @@ const setNextSkill = () => {
         currentSkill.value = skills[currentSkillIndex.value].name
         nextSkill.value = skills[currentSkillIndex.value + 1].name
       }
-      tl.revert()
     })
 
   setSkillsetTimeout()
@@ -81,6 +83,7 @@ onUnmounted(() => {
   letter-spacing: 0.2em;
   display: flex;
   justify-content: flex-end;
+  flex-wrap: wrap;
 
   &__wrapper {
     color: $mint;

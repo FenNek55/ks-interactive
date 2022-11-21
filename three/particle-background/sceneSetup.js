@@ -1,4 +1,5 @@
 import * as THREE from 'three/build/three.cjs'
+import gsap from 'gsap'
 
 export const setupScene = (bgElement) => {
   const scene = new THREE.Scene()
@@ -17,12 +18,20 @@ export const setupScene = (bgElement) => {
   camera.position.setZ(200)
   camera.position.setY(200)
   camera.position.setX(100)
-  camera.rotateX(-0.5)
+  camera.rotation.y = baseRotationY
+  camera.rotation.z = baseRotationZ
+  camera.rotation.x = 0
 
-  const updateCameraRotation = (rotationY = 0, rotationZ = 0) => {
-    camera.rotation.y = baseRotationY + (rotationY / 10)
-    camera.rotation.z = baseRotationZ + (rotationY / 10)
-    camera.rotation.x = (rotationZ / 10)
+  const updateCameraRotation = (offsets) => {
+    // camera.rotation.y = baseRotationY + (offsets.y / 10)
+    // camera.rotation.z = baseRotationZ + (offsets.y / 10)
+    // camera.rotation.x = (offsets.x / 10)
+
+    gsap.to(camera.rotation, {
+      x: (offsets.x / 10),
+      z: baseRotationZ + (offsets.y / 10),
+      y: baseRotationY + (offsets.y / 10)
+    })
   }
 
   renderer.render(scene, camera)

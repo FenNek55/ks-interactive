@@ -75,6 +75,7 @@ onMounted(() => {
   padding-top: $section-spacing;
   padding-bottom: calc($section-spacing / 2);
   background-color: $light;
+  overflow: hidden;
 
   &__dott {
     @include dott($pink);
@@ -83,11 +84,11 @@ onMounted(() => {
   &__title {
     @extend .section-title;
 
-    margin-bottom: 42px;
+    margin-bottom: 16px;
   }
 
   &__paragraph {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     padding-right: 24px;
     font-size: 26px;
   }
@@ -108,7 +109,7 @@ onMounted(() => {
   &__quote {
     display: inline-block;
     vertical-align: bottom;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
   }
 
   &__quote-weld {

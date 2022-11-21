@@ -74,7 +74,7 @@ export const startAnimation = (bgElement) => {
     count += 0.04
   }
 
-  updateCameraRotation()
+  updateCameraRotation({ x: 0, y: 0 })
 
   const onResize = () => {
     camera.aspect = window.innerWidth / window.innerHeight
@@ -85,15 +85,19 @@ export const startAnimation = (bgElement) => {
   }
 
   const onMouseMove = (e) => {
-    let xPos = 0; let yPos = 0
-    xPos = e.x / window.innerWidth
-    yPos = e.y / window.innerHeight
+    const offsets = {
+      x: 0,
+      y: 0
+    }
 
-    updateCameraRotation(xPos * -1, yPos)
+    offsets.x = e.x / window.innerWidth
+    offsets.y = -1 * e.y / window.innerHeight
+
+    updateCameraRotation(offsets)
   }
 
   window.addEventListener('resize', onResize)
-  window.addEventListener('mousemove', onMouseMove)
+  bgElement.addEventListener('mousemove', onMouseMove)
 
   const animate = () => {
     requestAnimationFrame(animate)
