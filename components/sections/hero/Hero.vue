@@ -1,5 +1,6 @@
 <template>
   <section class="hero">
+    <CanvasBacground class="hero__background" />
     <div class="hero__content wide-container">
       <h1 class="hero__title">
         _hello<br>my name<br>is Karol
@@ -11,6 +12,7 @@
 
 <script lang="ts" setup>
 import HeroSkills from './HeroSkills.vue'
+import CanvasBacground from '@/components/background/CanvasBackground.vue'
 </script>
 
 <style lang="scss" scoped>
@@ -18,6 +20,7 @@ import HeroSkills from './HeroSkills.vue'
   color: $light;
   background-color: $dark;
   height: 100vh;
+  position: relative;
 
   &__content {
     display: flex;
@@ -32,6 +35,12 @@ import HeroSkills from './HeroSkills.vue'
     @extend .section-title;
 
     line-height: 105.5%;
+  }
+
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 }
 </style>

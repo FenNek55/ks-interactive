@@ -29,7 +29,7 @@ const skillEl = ref(null)
 const nextEl = ref(null)
 const wrapperEl = ref(null)
 const animationDuration = 1.6
-const intervalTimeout = 5000
+const intervalTimeout = 4500
 
 const setNextSkill = () => {
   const nextElementWidth = nextEl.value ? parseInt(getComputedProperty(nextEl.value, 'width').slice(0, -2), 10) : 0
@@ -53,13 +53,19 @@ const setNextSkill = () => {
       }
       tl.revert()
     })
+
+  setSkillsetTimeout()
+}
+
+const setSkillsetTimeout = () => {
+  window.setTimeout(() => {
+    setNextSkill()
+  }, intervalTimeout)
 }
 
 onMounted(() => {
   skillElementWidth.value = skillEl.value ? getComputedProperty(skillEl.value, 'width') : '0px'
-  interval.value = window.setInterval(() => {
-    setNextSkill()
-  }, intervalTimeout)
+  setSkillsetTimeout()
 })
 
 onUnmounted(() => {
