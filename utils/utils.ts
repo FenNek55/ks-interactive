@@ -8,3 +8,13 @@ export const getComputedProperty = (element: HTMLElement, property: string) => {
 
   return propertyValue
 }
+
+export const getLoopingArrayValue = (array: any[], index: number) => {
+  if (index <= array.length - 1) {
+    return array[index]
+  }
+
+  const finalIndex = index - (Math.floor(index / array.length)) * array.length
+
+  return array[finalIndex]
+}

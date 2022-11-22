@@ -31,7 +31,7 @@ import CanvasBacground from '@/components/background/CanvasBackground.vue'
     padding-top: 156px;
 
     @media (min-width: $breakpoint-lg){
-      justify-content: center;
+      padding-top: 20vh;
     }
   }
 

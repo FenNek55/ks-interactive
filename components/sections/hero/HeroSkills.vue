@@ -17,10 +17,10 @@
 <script lang="ts" setup>
 import { ref, onMounted, onUnmounted } from '@nuxtjs/composition-api'
 import { gsap } from 'gsap'
-import { getComputedProperty } from '@/utils/utils'
+import { getComputedProperty, getLoopingArrayValue } from '@/utils/utils'
 import skills from '@/utils/skills'
 
-const interval = ref(0)
+const timeout = ref(0)
 const currentSkillIndex = ref(0)
 const skillElementWidth = ref('80px')
 const currentSkill = ref(skills[0].name)
@@ -41,26 +41,17 @@ const setNextSkill = () => {
     .then(() => {
       tl.revert()
 
-      if (currentSkillIndex.value === skills.length - 2) {
-        currentSkillIndex.value += 1
-        currentSkill.value = skills[currentSkillIndex.value].name
-        nextSkill.value = skills[0].name
-      } else if (currentSkillIndex.value === skills.length - 1) {
-        currentSkillIndex.value = 0
-        currentSkill.value = skills[currentSkillIndex.value].name
-        nextSkill.value = skills[currentSkillIndex.value + 1].name
-      } else {
-        currentSkillIndex.value += 1
-        currentSkill.value = skills[currentSkillIndex.value].name
-        nextSkill.value = skills[currentSkillIndex.value + 1].name
-      }
+      currentSkillIndex.value += 1
+      currentSkill.value = getLoopingArrayValue(skills, currentSkillIndex.value).name
+      nextSkill.value = getLoopingArrayValue(skills, currentSkillIndex.value + 1).name
     })
 
   setSkillsetTimeout()
 }
 
 const setSkillsetTimeout = () => {
-  window.setTimeout(() => {
+  clearTimeout(timeout.value)
+  timeout.value = window.setTimeout(() => {
     setNextSkill()
   }, intervalTimeout)
 }
@@ -71,8 +62,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  clearInterval(interval.value)
-  interval.value = 0
+  clearTimeout(timeout.value)
 })
 </script>
 
