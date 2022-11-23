@@ -55,5 +55,8 @@ export default {
       aggregateTimeout: 300,
       poll: 1000
     }
+  },
+  generate: {
+    fallback: '404.html'
   }
 }
