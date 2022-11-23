@@ -1,13 +1,15 @@
 <template>
-  <section class="hero">
-    <CanvasBacground class="hero__background" />
-    <div class="hero__content wide-container">
-      <h1 class="hero__title">
-        _hello<br>my name<br>is Karol
-      </h1>
-      <HeroSkills />
-    </div>
-  </section>
+  <div class="hero__wrapper">
+    <section class="hero">
+      <CanvasBacground class="hero__background" />
+      <div class="hero__content wide-container">
+        <h1 class="hero__title">
+          _hello<br>my name<br>is Karol
+        </h1>
+        <HeroSkills />
+      </div>
+    </section>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -25,6 +27,10 @@ import CanvasBacground from '@/components/background/CanvasBackground.vue'
   left: 0;
   width: 100%;
   z-index: -1;
+
+  &__wrapper {
+    height: 100vh;
+  }
 
   &__content {
     display: flex;
