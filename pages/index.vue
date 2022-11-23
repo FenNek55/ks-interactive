@@ -1,6 +1,6 @@
 <template>
-  <div class="component-wrapper index">
-    <Hero class="index__hero" />
+  <div class="index">
+    <Hero />
     <About class="index__about" />
     <Skills />
     <Contact />
@@ -29,14 +29,6 @@ export default Vue.extend({
 .index {
   width: 100%;
   overflow: hidden;
-
-  &__hero {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: -1;
-  }
 
   &__about {
     margin-top: 100vh;

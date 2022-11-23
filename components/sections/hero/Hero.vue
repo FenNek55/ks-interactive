@@ -20,7 +20,11 @@ import CanvasBacground from '@/components/background/CanvasBackground.vue'
   color: $light;
   background-color: $dark;
   height: 100vh;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
 
   &__content {
     display: flex;
