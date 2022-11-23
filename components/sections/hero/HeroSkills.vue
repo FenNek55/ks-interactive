@@ -1,6 +1,6 @@
 <template>
   <div class="skills">
-    I use
+    <span class="skills__pre">I use</span>
     <div
       ref="wrapperEl"
       class="skills__wrapper"
@@ -10,7 +10,8 @@
     >
       <span ref="skillEl" class="skills__skill">{{ currentSkill }}</span>
       <span ref="nextEl" class="skills__next">{{ nextSkill }}</span>
-    </div> to create awesome stuff
+    </div>
+    <span class="skills_end">to create awesome solutions</span>
   </div>
 </template>
 
@@ -71,15 +72,14 @@ onUnmounted(() => {
   font-size: 20px;
   font-weight: 200;
   letter-spacing: 0.2em;
-  display: flex;
-  justify-content: flex-end;
-  flex-wrap: wrap;
 
   &__wrapper {
+    height: 24px;
+    display: inline-block;
     color: $mint;
     position: relative;
-    margin: 0 8px;
     font-weight: 600;
+    vertical-align: top;
   }
 
   &__skill {

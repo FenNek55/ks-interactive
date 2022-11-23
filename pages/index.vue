@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <Hero />
-    <About class="index__about" />
+    <About/>
     <Skills />
     <Contact />
   </div>
@@ -27,11 +27,6 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .index {
-  width: 100%;
   overflow: hidden;
-
-  &__about {
-    margin-top: 100vh;
-  }
 }
 </style>

@@ -84,13 +84,21 @@ onMounted(() => {
   &__title {
     @extend .section-title;
 
-    margin-bottom: 16px;
+    margin-bottom: 24px;
   }
 
   &__paragraph {
     margin-bottom: 16px;
     padding-right: 24px;
-    font-size: 26px;
+    font-size: 20px;
+
+    &:last-of-type {
+      margin-bottom: 24px;
+    }
+
+    @media(min-width: $breakpoint-md) {
+      font-size: 24px;
+    }
   }
 
   &__quote-wrapper {
@@ -109,7 +117,11 @@ onMounted(() => {
   &__quote {
     display: inline-block;
     vertical-align: bottom;
-    margin-bottom: 6px;
+    margin-bottom: 24px;
+
+    @media(min-width: $breakpoint-md) {
+      margin-bottom: 12px;
+    }
   }
 
   &__quote-weld {
@@ -119,7 +131,7 @@ onMounted(() => {
   &__swoosh {
     position: absolute;
     top: 0;
-    left: 0;
+    left: 12px;
     width: 80px;
     height: 36px;
     display: inline;
