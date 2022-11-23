@@ -97,7 +97,7 @@ export const startAnimation = (bgElement) => {
   }
 
   window.addEventListener('resize', onResize)
-  bgElement.addEventListener('mousemove', onMouseMove)
+  window.addEventListener('mousemove', onMouseMove)
 
   const animate = () => {
     requestAnimationFrame(animate)
