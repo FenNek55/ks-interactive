@@ -1,9 +1,9 @@
 <template>
   <div class="index">
-    <Hero />
-    <About />
-    <Skills />
-    <Contact />
+    <Hero id="hero" />
+    <About id="about" />
+    <Skills id="skills" />
+    <Contact id="contact" />
   </div>
 </template>
 
@@ -25,7 +25,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .index {
   overflow: hidden;
 }
