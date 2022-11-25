@@ -12,6 +12,7 @@ const head = {
     { hid: 'og-description', property: 'og:description', content: 'My name is Karol, I\'m a frontend developer and this is my personal portfolio website' },
     { hid: 'og-image', property: 'og:image', content: 'https://www.ksinteractive.pl/og.png' },
     { hid: 'og-url', property: 'og:url', content: 'https://www.ksinteractive.pl' },
+    { hid: 'og-image-alt', property: 'og:image:alt', content: 'Screenshot of Karol\' portfolio website' },
     { name: 'format-detection', content: 'telephone=no' }
   ],
   link: [
