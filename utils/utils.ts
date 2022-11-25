@@ -1,4 +1,4 @@
-export function delay (ms: number) {
+export const delay = (ms: number) => {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
@@ -17,4 +17,17 @@ export const getLoopingArrayValue = (array: any[], index: number) => {
   const finalIndex = index - (Math.floor(index / array.length)) * array.length
 
   return array[finalIndex]
+}
+
+export const smoothScrollToItem = (query: string) => {
+  const targetEl = document.querySelector(query)
+  const rect = targetEl?.getBoundingClientRect()
+  const scrollTop = window.scrollY
+
+  if (rect) {
+    window.scrollTo({
+      top: rect?.top + scrollTop,
+      behavior: 'smooth'
+    })
+  }
 }
