@@ -10,7 +10,7 @@ const head = {
     { hid: 'og-type', property: 'og:type', content: 'website' },
     { hid: 'og-title', property: 'og:title', content: 'ks-interactive | Developer portfolio' },
     { hid: 'og-description', property: 'og:description', content: 'My name is Karol, I\'m a frontend developer and this is my personal portfolio website' },
-    { hid: 'og-image', property: 'og:image', content: '/og.png' },
+    { hid: 'og-image', property: 'og:image', content: 'https://www.ksinteractive.pl/og.png' },
     { name: 'format-detection', content: 'telephone=no' }
   ],
   link: [
