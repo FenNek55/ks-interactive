@@ -1,8 +1,8 @@
 <template>
-  <div class="hero__wrapper">
+  <div ref="heroWrapper" class="hero__wrapper">
     <section class="hero">
       <CanvasBacground class="hero__background" />
-      <div class="hero__content wide-container">
+      <div ref="heroContent" class="hero__content wide-container">
         <h1 class="hero__title">
           _hello<br>my name<br>is Karol
         </h1>
@@ -13,8 +13,31 @@
 </template>
 
 <script lang="ts" setup>
+import { ref, onMounted } from '@nuxtjs/composition-api'
+import { gsap } from 'gsap'
 import HeroSkills from './HeroSkills.vue'
 import CanvasBacground from '@/components/background/CanvasBackground.vue'
+
+const heroContent = ref(null)
+const heroWrapper = ref(null)
+
+onMounted(() => {
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: heroWrapper.value,
+      start: 'top',
+      scrub: true
+    }
+  })
+
+  tl.to(heroContent.value, {
+    y: -60,
+    ease: 'linear'
+  }).to(heroContent.value, {
+    opacity: 0
+  })
+})
+
 </script>
 
 <style lang="scss" scoped>

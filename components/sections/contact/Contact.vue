@@ -24,7 +24,7 @@ onMounted(() => {
   gsap.from(title.value, {
     scrollTrigger: {
       trigger: title.value,
-      start: 'top 60%'
+      start: 'top 80%'
     },
     x: -40,
     duration: 1.4,

@@ -17,8 +17,8 @@
           </a>
         </div>
       </div>
-      <nav class="footer__nav">
-        <a class="footer__link footer__link--hero" href="#hero">Hero</a>
+      <nav ref="footerNav" class="footer__nav">
+        <a class="footer__link footer__link--hero" href="#hero">Top</a>
         <a class="footer__link footer__link--about" href="#about">About</a>
         <a class="footer__link footer__link--skills" href="#skills">Skills</a>
         <a class="footer__link footer__link--contact" href="#contact">Contact</a>
@@ -28,8 +28,28 @@
 </template>
 
 <script lang="ts" setup>
+import { ref, onMounted } from '@nuxtjs/composition-api'
+import { smoothScrollToItem } from '@/utils/utils'
 const githubIcon = require('@/assets/images/icons/github.svg')
 const linkedinIcon = require('@/assets/images/icons/linkedin.svg')
+
+const footerNav = ref<HTMLElement | null>(null)
+
+onMounted(() => {
+  const linksEl = footerNav.value && footerNav.value.querySelectorAll('.footer__link')
+  linksEl?.forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault()
+      const targetLink = e.target as HTMLLinkElement
+
+      if (!targetLink) {
+        return
+      }
+
+      smoothScrollToItem(targetLink.getAttribute('href') || '#hero')
+    })
+  })
+})
 </script>
 
 <style lang="scss" scoped>
@@ -84,7 +104,8 @@ const linkedinIcon = require('@/assets/images/icons/linkedin.svg')
         display: block;
         color: $light;
         text-decoration: none;
-        margin-bottom: 12px;
+        padding-bottom: 12px;
+        transition: 0.2s;
 
         &--hero {
             &::after {
@@ -123,6 +144,8 @@ const linkedinIcon = require('@/assets/images/icons/linkedin.svg')
         }
 
         &:hover {
+            transform: translateX(10px);
+
             &::after {
                 transform: translateX(0);
                 opacity: 1;
