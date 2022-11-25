@@ -18,7 +18,7 @@
         </div>
       </div>
       <nav ref="footerNav" class="footer__nav">
-        <a class="footer__link footer__link--hero" href="#hero">Hero</a>
+        <a class="footer__link footer__link--hero" href="#hero">Top</a>
         <a class="footer__link footer__link--about" href="#about">About</a>
         <a class="footer__link footer__link--skills" href="#skills">Skills</a>
         <a class="footer__link footer__link--contact" href="#contact">Contact</a>
