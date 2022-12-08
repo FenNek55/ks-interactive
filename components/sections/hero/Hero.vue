@@ -1,6 +1,6 @@
 <template>
   <div ref="heroWrapper" class="hero__wrapper">
-    <section class="hero">
+    <section ref="hero" class="hero">
       <CanvasBacground class="hero__background" />
       <div ref="heroContent" class="hero__content wide-container">
         <h1 class="hero__title">
@@ -20,8 +20,19 @@ import CanvasBacground from '@/components/background/CanvasBackground.vue'
 
 const heroContent = ref(null)
 const heroWrapper = ref(null)
+const hero = ref<HTMLElement | null>(null)
+
+const setHeight = () => {
+  if (!hero.value) {
+    return
+  }
+
+  hero.value.style.height = `${window.innerHeight}px`
+}
 
 onMounted(() => {
+  setHeight()
+
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: heroWrapper.value,
@@ -36,6 +47,8 @@ onMounted(() => {
   }).to(heroContent.value, {
     opacity: 0
   })
+
+  window.addEventListener('resize', setHeight)
 })
 
 </script>
@@ -44,7 +57,7 @@ onMounted(() => {
 .hero {
   color: $light;
   background-color: $dark;
-  height: 100vh;
+  min-height: 100vh;
   position: fixed;
   top: 0;
   left: 0;

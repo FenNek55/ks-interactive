@@ -21,7 +21,7 @@ import { gsap } from 'gsap'
 import { getComputedProperty, getLoopingArrayValue } from '@/utils/utils'
 import skills from '@/utils/skills'
 
-const timeout = ref(0)
+const interval = ref()
 const currentSkillIndex = ref(0)
 const skillElementWidth = ref('80px')
 const currentSkill = ref(skills[0].name)
@@ -46,24 +46,15 @@ const setNextSkill = () => {
       currentSkill.value = getLoopingArrayValue(skills, currentSkillIndex.value).name
       nextSkill.value = getLoopingArrayValue(skills, currentSkillIndex.value + 1).name
     })
-
-  setSkillsetTimeout()
-}
-
-const setSkillsetTimeout = () => {
-  clearTimeout(timeout.value)
-  timeout.value = window.setTimeout(() => {
-    setNextSkill()
-  }, intervalTimeout)
 }
 
 onMounted(() => {
   skillElementWidth.value = skillEl.value ? getComputedProperty(skillEl.value, 'width') : '0px'
-  setSkillsetTimeout()
+  interval.value = setInterval(setNextSkill, intervalTimeout)
 })
 
 onUnmounted(() => {
-  clearTimeout(timeout.value)
+  clearInterval(interval.value)
 })
 </script>
 
