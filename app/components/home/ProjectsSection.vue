@@ -4,10 +4,15 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useDisplay } from 'vuetify'
 
+type ProjectImage = {
+  src: string
+  alt: string
+}
+
 type Project = {
   name: string
   size: 'sm' | 'lg'
-  images?: string[]
+  images?: ProjectImage[]
   description: string
   techStack: string[]
 }
@@ -21,9 +26,9 @@ const projects: Project[] = [
     name: 'Skillhabit',
     size: 'lg',
     images: [
-      '/images/skillhabit1.jpg',
-      '/images/skillhabit2.jpg',
-      '/images/skillhabit3.jpg',
+      { src: '/images/skillhabit1.jpg', alt: 'Skillhabit — course creator and LMS dashboard' },
+      { src: '/images/skillhabit2.jpg', alt: 'Skillhabit — analytics and certification views' },
+      { src: '/images/skillhabit3.jpg', alt: 'Skillhabit — multilingual course content UI' },
     ],
     description:
       'A microservices-based Learning Management System (LMS) featuring built-in analytics and certification tools. It includes an intuitive course creator accelerated by AI tooling and an automated LLM translation pipeline for scalable multilingual support and white-label branding.',
@@ -54,9 +59,9 @@ const projects: Project[] = [
     name: 'Symptomate',
     size: 'lg',
     images: [
-      '/images/symptomate1.jpg',
-      '/images/symptomate2.jpg',
-      '/images/symptomate3.jpg',
+      { src: '/images/symptomate1.jpg', alt: 'Symptomate — symptom checker interview flow' },
+      { src: '/images/symptomate2.jpg', alt: 'Symptomate — preliminary diagnosis results screen' },
+      { src: '/images/symptomate3.jpg', alt: 'Symptomate — multilingual triage interface' },
     ],
     description:
       'A medical symptom checker powered by Infermedica\'s custom inference engine. It analyzes user inputs to generate preliminary diagnoses and streamline patient triage. The platform features an accessible UI, supports 14 languages, and provides robust API endpoints for external healthcare integrations.',
@@ -92,9 +97,9 @@ const projects: Project[] = [
     name: 'Symptomate Chatbot',
     size: 'lg',
     images: [
-      '/images/symptomate-chat1.jpg',
-      '/images/symptomate-chat2.jpg',
-    ],  
+      { src: '/images/symptomate-chat1.jpg', alt: 'Symptomate Chatbot — conversational triage chat UI' },
+      { src: '/images/symptomate-chat2.jpg', alt: 'Symptomate Chatbot — medical guidance response view' },
+    ],
     description:
       'An AI-driven medical chatbot built on the Symptomate API. It bridges the conversational flexibility of Large Language Models (LLMs) with a validated medical inference engine, providing patients with a safe and intuitive triage experience.',
     techStack: ['TypeScript', 'Vue', 'Nuxt.js', 'Vite', 'Vitest', 'Cypress', 'Sass'],
@@ -103,8 +108,8 @@ const projects: Project[] = [
     name: 'Infermedica.com',
     size: 'lg',
     images: [
-      '/images/infermedica1.jpg',
-      '/images/infermedica2.jpg',
+      { src: '/images/infermedica1.jpg', alt: 'Infermedica.com — marketing homepage layout' },
+      { src: '/images/infermedica2.jpg', alt: 'Infermedica.com — product and content page' },
     ],
     description:
       'Infermedica\'s main website, migrated from a legacy static codebase to a modern headless CMS architecture. Built with Nuxt 3 and Storyblok, it relies on Incremental Static Generation (ISG) and i18n to deliver sub-second Core Web Vitals and scalable multilingual content.',
@@ -128,10 +133,10 @@ const projects: Project[] = [
     name: 'RemoEdu.pl',
     size: 'lg',
     images: [
-      '/images/remoedu1.jpg',
-      '/images/remoedu2.jpg',
-      '/images/remoedu3.jpg',
-      '/images/remoedu4.jpg',
+      { src: '/images/remoedu1.jpg', alt: 'RemoEdu.pl — teacher worksheet library' },
+      { src: '/images/remoedu2.jpg', alt: 'RemoEdu.pl — classroom smartboard game view' },
+      { src: '/images/remoedu3.jpg', alt: 'RemoEdu.pl — digital blackboard annotation mode' },
+      { src: '/images/remoedu4.jpg', alt: 'RemoEdu.pl — subscription and materials browser' },
     ],
     description:
       'A subscription-based SaaS platform tailored for primary school teachers. Optimized for classroom smartboards, it features a searchable database of PDF worksheets, educational games, and a digital blackboard mode that lets educators display and annotate materials in real-time.',
@@ -174,6 +179,9 @@ function entersFromRight(index: number) {
 onMounted(() => {
   if (!sectionRef.value || !import.meta.client) return
 
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (reduceMotion) return
+
   gsap.registerPlugin(ScrollTrigger)
 
   animationCtx = gsap.context(() => {
@@ -204,9 +212,17 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section id="projects" ref="sectionRef" class="projects-section">
+  <section
+    id="projects"
+    ref="sectionRef"
+    class="projects-section"
+    aria-labelledby="projects-heading"
+    tabindex="-1"
+  >
     <div class="d-flex align-center ga-4 mb-8">
-      <h2 class="font-weight-bold text-headline-medium mb-0 mt-0">Selected projects</h2>
+      <h2 id="projects-heading" class="font-weight-bold text-headline-medium mb-0 mt-0">
+        Selected projects
+      </h2>
     </div>
 
     <div class="projects-grid">
@@ -227,15 +243,15 @@ onBeforeUnmount(() => {
           <v-carousel
             class="project-card__carousel"
             hide-delimiter-background
-            show-arrows="hover"
+            show-arrows
             color="primary"
             :height="mdAndUp ? 420 : 240"
           >
             <v-carousel-item
               v-for="image in project.images"
-              :key="image"
-              :src="image"
-              :alt="`${project.name} screenshot`"
+              :key="image.src"
+              :src="image.src"
+              :alt="image.alt"
               cover
               position="top center"
             />
@@ -250,14 +266,14 @@ onBeforeUnmount(() => {
           <h3 class="text-headline-small font-weight-bold mt-0 mb-3">
             {{ project.name }}
           </h3>
-          <p class="project-card__description text-body-large text-medium-emphasis">
+          <p class="project-card__description text-body-large text-readable-muted">
             {{ project.description }}
           </p>
         </div>
 
         <div class="project-card__stack">
-          <p class="project-card__stack-label">Stack</p>
-          <ul class="project-card__chips">
+          <p :id="`stack-label-${index}`" class="project-card__stack-label">Stack</p>
+          <ul class="project-card__chips" :aria-labelledby="`stack-label-${index}`">
             <li v-for="tech in project.techStack" :key="tech">
               {{ tech }}
             </li>
@@ -269,6 +285,10 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
+.projects-section:focus {
+  outline: none;
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: 1fr;

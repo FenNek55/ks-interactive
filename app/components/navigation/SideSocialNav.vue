@@ -23,11 +23,15 @@ const links: SocialLink[] = [
     external: true,
   },
   {
-    label: 'Email',
+    label: 'Email Karol',
     href: 'mailto:stasik.karol@gmail.com',
     icon: 'mdi-email',
   },
 ]
+
+function accessibleLabel(link: SocialLink) {
+  return link.external ? `${link.label} (opens in a new tab)` : link.label
+}
 
 const navRef = ref<HTMLElement | null>(null)
 let animationCtx: gsap.Context | null = null
@@ -179,14 +183,14 @@ onBeforeUnmount(() => {
           :href="link.href"
           :target="link.external ? '_blank' : undefined"
           :rel="link.external ? 'noopener noreferrer' : undefined"
-          :aria-label="link.label"
+          :aria-label="accessibleLabel(link)"
           :ripple="false"
           rounded="pill"
           variant="flat"
         >
           <span class="side-social__face">
-            <span class="side-social__label">{{ link.label }}</span>
-            <span class="side-social__icon">
+            <span class="side-social__label" aria-hidden="true">{{ link.label }}</span>
+            <span class="side-social__icon" aria-hidden="true">
               <v-icon :icon="link.icon" size="22" />
             </span>
           </span>
@@ -233,6 +237,11 @@ onBeforeUnmount(() => {
   -webkit-backdrop-filter: blur(8px) saturate(1.35);
   color: rgba(237, 237, 237, 0.96) !important;
   box-shadow: none !important;
+}
+
+.side-social__btn:focus-visible {
+  outline: 2px solid #e80759;
+  outline-offset: 3px;
 }
 
 .side-social__btn :deep(.v-btn__overlay),

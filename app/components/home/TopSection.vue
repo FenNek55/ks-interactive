@@ -15,24 +15,39 @@ function onButtonGroupLeave() {
   setMode('repel')
 }
 
-function scrollToProjects() {
+function scrollToProjects(event: Event) {
+  const target = document.getElementById('projects')
+  if (!target) return
+
+  event.preventDefault()
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (reduceMotion) {
+    target.scrollIntoView()
+    target.focus({ preventScroll: true })
+    return
+  }
+
   gsap.to(window, {
     duration: 1.8,
     scrollTo: { y: '#projects', autoKill: true },
     ease: 'power2.inOut',
+    onComplete: () => {
+      target.focus({ preventScroll: true })
+    },
   })
 }
 </script>
 
 <template>
-  <section class="top-section">
+  <section class="top-section" aria-labelledby="home-hero-heading">
     <v-row>
       <v-col cols="12" md="7" lg="6">
         <div class="top-copy d-flex flex-column ga-3">
-          <h1 class="text-display-medium font-weight-bold">
+          <h1 id="home-hero-heading" class="text-display-medium font-weight-bold">
             Hello, my name is <span class="text-primary">Karol.</span><br> I turn business challenges into user friendly answers.
           </h1>
-          <p class="text-body-large font-weight-normal text-medium-emphasis pb-8">
+          <p class="text-body-large font-weight-normal text-readable-muted pb-8">
             With over {{ yearsOfExperience }} years of professional experience across the stack, I bridge the gap between technical and business stakeholders to design, build, and ship comprehensive solutions that users love.
           </p>
           <div
@@ -41,6 +56,7 @@ function scrollToProjects() {
             @pointerleave="onButtonGroupLeave"
           >
             <v-btn
+              href="#projects"
               size="large"
               color="primary"
               rounded
@@ -54,21 +70,21 @@ function scrollToProjects() {
       </v-col>
       <v-col cols="12" md="5" lg="6" class="top-portrait-col d-none d-lg-flex align-center justify-center">
         <div class="top-portrait">
-          <img
+          <v-img
             class="top-portrait__layer top-portrait__layer--base"
             src="/images/portrait.png"
             alt="Portrait of Karol"
-            width="640"
-            height="640"
-          >
-          <img
+            aspect-ratio="1"
+            contain
+          />
+          <v-img
             class="top-portrait__layer top-portrait__layer--blur"
             src="/images/portrait.png"
             alt=""
             aria-hidden="true"
-            width="640"
-            height="640"
-          >
+            aspect-ratio="1"
+            contain
+          />
         </div>
       </v-col>
     </v-row>
@@ -110,8 +126,6 @@ function scrollToProjects() {
 .top-portrait__layer {
   display: block;
   width: 100%;
-  height: auto;
-  object-fit: contain;
 }
 
 .top-portrait__layer--blur {
@@ -119,7 +133,6 @@ function scrollToProjects() {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
   filter: blur(2px);
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 30%, #000 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, transparent 30%, #000 100%);

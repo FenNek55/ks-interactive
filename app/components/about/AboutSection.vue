@@ -1,7 +1,7 @@
 <template>
-  <section class="about">
+  <section class="about" aria-labelledby="about-heading">
     <div class="d-flex align-center ga-4 mb-8">
-      <h1 class="font-weight-bold text-headline-medium mb-0 mt-0">
+      <h1 id="about-heading" class="font-weight-bold text-headline-medium mb-0 mt-0">
         More <span class="text-primary">about me</span>
       </h1>
     </div>

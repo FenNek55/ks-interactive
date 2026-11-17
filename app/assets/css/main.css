@@ -15,6 +15,43 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+/* Secondary body copy — stronger than Vuetify medium-emphasis (~0.6) for AA contrast */
+.text-readable-muted {
+  color: rgba(222, 222, 222, 0.88);
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  padding: 0.75rem 1.1rem;
+  background: #e80759;
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-120%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+#main-content:focus {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link {
+    transition: none;
+  }
+}
+
 /* Static shell shared by SSR fallback and DotWaveBackground.
    Keep z-index >= 0 — negative values paint under html/body backgrounds. */
 .dot-wave {

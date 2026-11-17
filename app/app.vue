@@ -1,5 +1,6 @@
 <template>
   <div class="page-shell">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <ClientOnly>
       <DotWaveBackground />
       <template #fallback>
@@ -12,10 +13,10 @@
         </div>
       </template>
     </ClientOnly>
-    <main class="page-main">
+    <TopNav />
+    <main id="main-content" class="page-main" tabindex="-1">
       <NuxtPage />
     </main>
-    <TopNav />
     <SideSocialNav />
   </div>
 </template>

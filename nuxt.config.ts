@@ -9,6 +9,21 @@ export default defineNuxtConfig({
   modules: ['@nuxt/fonts', '@nuxt/icon/module', 'vuetify-nuxt-module'],
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: 'en',
+      },
+      title: 'Karol Stasik',
+      meta: [
+        {
+          name: 'description',
+          content:
+            'Portfolio of Karol Stasik — full-stack developer turning business challenges into user-friendly solutions.',
+        },
+      ],
+    },
+  },
   // Prerender all routes to static HTML — no Node server at runtime
   nitro: {
     preset: 'static',

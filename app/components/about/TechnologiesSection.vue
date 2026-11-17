@@ -44,9 +44,9 @@ const technologies = [
 </script>
 
 <template>
-  <section class="technologies">
+  <section class="technologies" aria-labelledby="technologies-heading">
     <div class="d-flex align-center ga-4 mb-8">
-      <h2 class="font-weight-bold text-headline-medium mb-0 mt-0">
+      <h2 id="technologies-heading" class="font-weight-bold text-headline-medium mb-0 mt-0">
         <span class="text-primary">Technologies</span> I worked with
       </h2>
     </div>
