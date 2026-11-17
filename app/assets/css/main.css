@@ -1,0 +1,152 @@
+:root {
+  /* Match DotWaveBackground atmosphere so SSR / pre-hydrate never flashes light */
+  --page-bg-color: #09070c;
+  --page-text-color: #dedede;
+}
+
+html {
+  background-color: var(--page-bg-color);
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--page-bg-color);
+  color: var(--page-text-color);
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Static shell shared by SSR fallback and DotWaveBackground.
+   Keep z-index >= 0 — negative values paint under html/body backgrounds. */
+.dot-wave {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.dot-wave__atmosphere,
+.dot-wave__glow,
+.dot-wave__canvas,
+.dot-wave__vignette {
+  position: absolute;
+  inset: 0;
+}
+
+.dot-wave__atmosphere {
+  background:
+    radial-gradient(ellipse 85% 55% at 50% 118%, rgba(232, 7, 89, 0.2), transparent 62%),
+    radial-gradient(ellipse 50% 38% at 72% 22%, rgba(232, 7, 89, 0.07), transparent 58%),
+    radial-gradient(ellipse 55% 42% at 82% 12%, rgba(56, 78, 132, 0.16), transparent 55%),
+    radial-gradient(ellipse 48% 36% at 14% 28%, rgba(28, 42, 78, 0.14), transparent 52%),
+    radial-gradient(ellipse 40% 28% at 40% 8%, rgba(120, 40, 70, 0.08), transparent 60%),
+    linear-gradient(168deg, #06050a 0%, #09070c 38%, #0c0812 72%, #0a070e 100%);
+}
+
+.dot-wave__glow {
+  pointer-events: none;
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+}
+
+.dot-wave__glow--primary {
+  background:
+    radial-gradient(ellipse 42% 28% at 58% 78%, rgba(232, 7, 89, 0.22), transparent 70%),
+    radial-gradient(circle 18% at 34% 62%, rgba(232, 7, 89, 0.1), transparent 72%);
+  animation: dot-wave-drift-a 22s ease-in-out infinite alternate;
+}
+
+.dot-wave__glow--cool {
+  background:
+    radial-gradient(ellipse 36% 30% at 78% 30%, rgba(70, 100, 170, 0.14), transparent 68%),
+    radial-gradient(circle 14% at 22% 18%, rgba(90, 120, 190, 0.08), transparent 70%);
+  animation: dot-wave-drift-b 28s ease-in-out infinite alternate;
+}
+
+.dot-wave__glow--horizon {
+  background:
+    linear-gradient(
+      180deg,
+      transparent 42%,
+      rgba(232, 7, 89, 0.045) 62%,
+      rgba(40, 28, 55, 0.12) 78%,
+      transparent 92%
+    ),
+    radial-gradient(ellipse 90% 24% at 50% 88%, rgba(232, 7, 89, 0.12), transparent 72%);
+  animation: dot-wave-pulse 16s ease-in-out infinite alternate;
+}
+
+.dot-wave__vignette {
+  background:
+    radial-gradient(
+      ellipse 78% 68% at 50% 42%,
+      transparent 28%,
+      rgba(5, 4, 8, 0.28) 72%,
+      rgba(4, 3, 7, 0.78) 100%
+    ),
+    linear-gradient(90deg, rgba(5, 4, 8, 0.35) 0%, transparent 18%, transparent 82%, rgba(5, 4, 8, 0.35) 100%);
+}
+
+@keyframes dot-wave-drift-a {
+  from {
+    transform: translate3d(-2%, 1%, 0) scale(1);
+    opacity: 0.85;
+  }
+  to {
+    transform: translate3d(3%, -2%, 0) scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes dot-wave-drift-b {
+  from {
+    transform: translate3d(2%, -1%, 0) scale(1.05);
+    opacity: 0.75;
+  }
+  to {
+    transform: translate3d(-3%, 2%, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes dot-wave-pulse {
+  from {
+    opacity: 0.65;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot-wave__glow--primary,
+  .dot-wave__glow--cool,
+  .dot-wave__glow--horizon {
+    animation: none;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Syne', sans-serif;
+}
+
+.page-shell {
+  position: relative;
+  min-height: 100vh;
+}
+
+.page-main {
+  position: relative;
+  z-index: 1;
+}
+
+.bg-blurred {
+  background: rgba(0, 0, 0, 0.452) !important;
+  backdrop-filter: blur(5px) saturate(1.35);
+  -webkit-backdrop-filter: blur(5px) saturate(1.35);
+}
