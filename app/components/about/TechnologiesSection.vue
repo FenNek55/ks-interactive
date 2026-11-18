@@ -48,6 +48,7 @@ const groups: TechnologyGroup[] = [
       'Django',
       'Pydantic',
       'SQLAlchemy',
+      'uvicorn',
       'PostgreSQL',
       'MongoDB',
       'Stripe',
