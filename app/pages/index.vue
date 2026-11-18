@@ -1,11 +1,14 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Karol Stasik — Home',
+  title: 'Karol Stasik — Developer Portfolio & Projects',
   description:
-    'Full-stack developer portfolio. Selected projects spanning LMS, healthcare, and education products.',
-  ogTitle: 'Karol Stasik — Home',
+    'Developer portfolio. Selected projects spanning LMS, healthcare, and education products.',
+  ogTitle: 'Karol Stasik — Developer Portfolio & Projects',
   ogDescription:
-    'Full-stack developer portfolio. Selected projects spanning LMS, healthcare, and education products.',
+    'Developer portfolio. Selected projects spanning LMS, healthcare, and education products.',
+  twitterTitle: 'Karol Stasik — Developer Portfolio & Projects',
+  twitterDescription:
+    'Developer portfolio. Selected projects spanning LMS, healthcare, and education products.',
 })
 </script>
 

@@ -14,12 +14,12 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'en',
       },
-      title: 'Karol Stasik',
+      title: 'Karol Stasik — Developer Portfolio & Projects',
       meta: [
         {
           name: 'description',
           content:
-            'Portfolio of Karol Stasik — full-stack developer turning business challenges into user-friendly solutions.',
+            'Portfolio of Karol Stasik — developer turning business challenges into user-friendly solutions.',
         },
       ],
     },

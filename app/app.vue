@@ -1,3 +1,26 @@
+<script setup lang="ts">
+const siteUrl = 'https://www.ksinteractive.dev'
+const route = useRoute()
+const pageUrl = computed(() => {
+  const path = route.path === '/' ? '' : route.path
+  return `${siteUrl}${path}`
+})
+
+useSeoMeta({
+  ogSiteName: 'KS Interactive',
+  ogType: 'website',
+  ogUrl: pageUrl,
+  ogImage: `${siteUrl}/og.jpg`,
+  ogImageSecureUrl: `${siteUrl}/og.jpg`,
+  ogImageType: 'image/jpeg',
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
+  ogImageAlt: 'Karol Stasik — Developer Portfolio',
+  twitterCard: 'summary_large_image',
+  twitterImage: `${siteUrl}/og.jpg`,
+})
+</script>
+
 <template>
   <div class="page-shell">
     <a href="#main-content" class="skip-link">Skip to main content</a>
