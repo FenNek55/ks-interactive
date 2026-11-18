@@ -57,7 +57,7 @@ function scrollToProjects(event: Event) {
             With over {{ yearsOfExperience }} years of professional experience across the stack, I bridge the gap between technical and business stakeholders to design, build, and ship comprehensive solutions that users love.
           </p>
           <div
-            class="top-actions d-inline-flex flex-column flex-sm-row flex-wrap ga-2 align-self-start"
+            class="top-actions d-inline-flex flex-column align-items-star flex-wrap ga-2 align-self-start"
             @pointerenter="onButtonGroupEnter"
             @pointerleave="onButtonGroupLeave"
           >
@@ -105,6 +105,8 @@ function scrollToProjects(event: Event) {
   min-height: 90svh;
   width: 100%;
   overflow-x: clip;
+  padding-top: 120px;
+  padding-bottom: 120px;
 }
 
 .top-copy :is(h1, p) {
