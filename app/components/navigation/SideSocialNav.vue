@@ -23,7 +23,7 @@ const links: SocialLink[] = [
     external: true,
   },
   {
-    label: 'Email Karol',
+    label: 'Email',
     href: 'mailto:stasik.karol@gmail.com',
     icon: 'mdi-email',
   },
@@ -34,6 +34,7 @@ function accessibleLabel(link: SocialLink) {
 }
 
 const navRef = ref<HTMLElement | null>(null)
+const { setMode } = useDotWaveInteraction()
 let animationCtx: gsap.Context | null = null
 
 const closedColors = {
@@ -176,7 +177,11 @@ onBeforeUnmount(() => {
 
 <template>
   <nav ref="navRef" class="side-social" aria-label="Social links">
-    <ul class="side-social__list">
+    <ul
+      class="side-social__list"
+      @pointerenter="setMode('swirl')"
+      @pointerleave="setMode('repel')"
+    >
       <li v-for="link in links" :key="link.label">
         <v-btn
           class="side-social__btn"
@@ -218,6 +223,7 @@ onBeforeUnmount(() => {
   margin: 0;
   padding: 0;
   list-style: none;
+  pointer-events: auto;
 }
 
 .side-social__btn {

@@ -99,24 +99,27 @@ const ACCENT_G = 0x07 / 0xff
 const ACCENT_B = 0x59 / 0xff
 const FOG_COLOR = 0x09070c
 const FOG_DENSITY = 0.019
-/** Camera-space focus distance — mid field stays sharp */
-const FOCUS_DISTANCE_BASE = 16.5
-const FOCUS_RANGE = 5.5
-const DOF_BLUR = 2.8
+/**
+ * Rest pose is the previous 25% scroll frame, so the top of the page
+ * opens already tilted with a softer focus. Scroll still ends at the same place.
+ */
+const FOCUS_DISTANCE_BASE = 15.5
+const FOCUS_RANGE = 4.3875
+const DOF_BLUR = 4.3
 
 const camScroll = {
-  x: 0,
-  y: 11.5,
-  z: 24,
-  lookX: 0,
-  lookY: -0.6,
-  lookZ: -6,
+  x: 0.4,
+  y: 10.675,
+  z: 22.875,
+  lookX: 0.1375,
+  lookY: -0.7875,
+  lookZ: -7.25,
   focus: FOCUS_DISTANCE_BASE,
   focusRange: FOCUS_RANGE,
   dofBlur: DOF_BLUR,
-  cocFalloff: 11,
+  cocFalloff: 9.3,
   /** 0 = subtle DOF, 1 = max scroll DOF */
-  dofIntensity: 0,
+  dofIntensity: 0.25,
 }
 
 type ParticleField = {
@@ -210,8 +213,8 @@ function createParticleField(): ParticleField {
         uFocusDistance: { value: FOCUS_DISTANCE_BASE },
         uFocusRange: { value: FOCUS_RANGE },
         uDofBlur: { value: DOF_BLUR },
-        uCocFalloff: { value: 11 },
-        uDofIntensity: { value: 0 },
+        uCocFalloff: { value: 9.3 },
+        uDofIntensity: { value: 0.25 },
         uAccent: { value: new THREE.Vector3(ACCENT_R, ACCENT_G, ACCENT_B) },
         uTime: { value: 0 },
       },

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onBeforeUnmount } from 'vue'
 import gsap from 'gsap'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 
@@ -14,6 +15,11 @@ function onButtonGroupEnter() {
 function onButtonGroupLeave() {
   setMode('repel')
 }
+
+// Navigation unmounts this section before pointerleave can fire.
+onBeforeUnmount(() => {
+  setMode('repel')
+})
 
 function scrollToProjects(event: Event) {
   const target = document.getElementById('projects')
@@ -65,6 +71,7 @@ function scrollToProjects(event: Event) {
             >
               See my work
             </v-btn>
+            <v-btn to="/about" variant="text">More about me</v-btn>
           </div>
         </div>
       </v-col>

@@ -3,6 +3,7 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
 
 const route = useRoute()
 const scrolled = ref(false)
+const { setMode } = useDotWaveInteraction()
 
 const links = [
   { label: 'Home', to: '/' },
@@ -34,7 +35,11 @@ onBeforeUnmount(() => {
     aria-label="Primary"
   >
     <div class="top-nav__inner">
-      <ul class="top-nav__list">
+      <ul
+        class="top-nav__list"
+        @pointerenter="setMode('swirl')"
+        @pointerleave="setMode('repel')"
+      >
         <li v-for="link in links" :key="link.to">
           <NuxtLink
             class="top-nav__link"

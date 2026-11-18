@@ -150,11 +150,11 @@ onBeforeUnmount(() => {
       <v-text-field
         v-model="query"
         class="technologies-search"
-        label="Search technologies"
+        label="Search"
         prepend-inner-icon="mdi-magnify"
         variant="outlined"
         color="primary"
-        rounded="lg"
+        rounded="xl"
         hide-details
         clearable
         density="comfortable"
@@ -162,9 +162,6 @@ onBeforeUnmount(() => {
         spellcheck="false"
         aria-controls="technologies-results"
       />
-      <p class="technologies-count" aria-live="polite">
-        {{ statusLabel }}
-      </p>
     </div>
 
     <div

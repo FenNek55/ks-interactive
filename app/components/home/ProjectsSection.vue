@@ -221,7 +221,7 @@ onBeforeUnmount(() => {
   >
     <div class="d-flex align-center ga-4 mb-8">
       <h2 id="projects-heading" class="font-weight-bold text-headline-medium mb-0 mt-0">
-        Selected projects
+        What i <span class="text-primary">worked on</span>
       </h2>
     </div>
 
@@ -285,6 +285,11 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
+.projects-section {
+  /* Cards slide in on the x-axis; without a clip their offset widens the page on mobile. */
+  overflow-x: clip;
+}
+
 .projects-section:focus {
   outline: none;
 }
