@@ -57,7 +57,7 @@ function scrollToProjects(event: Event) {
             With over {{ yearsOfExperience }} years of professional experience across the stack, I bridge the gap between technical and business stakeholders to design, build, and ship comprehensive solutions that users love.
           </p>
           <div
-            class="top-actions d-inline-flex flex-column align-items-star flex-wrap ga-2 align-self-start"
+            class="top-actions d-inline-flex align-center flex-wrap ga-2 align-self-start"
             @pointerenter="onButtonGroupEnter"
             @pointerleave="onButtonGroupLeave"
           >
@@ -71,7 +71,7 @@ function scrollToProjects(event: Event) {
             >
               See my work
             </v-btn>
-            <v-btn to="/about" variant="text">More about me</v-btn>
+            <v-btn to="/about" variant="text" rounded>More about me</v-btn>
           </div>
         </div>
       </v-col>

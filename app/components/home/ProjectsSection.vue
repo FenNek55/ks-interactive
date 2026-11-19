@@ -105,31 +105,6 @@ const projects: Project[] = [
     techStack: ['TypeScript', 'Vue', 'Nuxt.js', 'Vite', 'Vitest', 'Cypress', 'Sass'],
   },
   {
-    name: 'Infermedica.com',
-    size: 'lg',
-    images: [
-      { src: '/images/infermedica1.jpg', alt: 'Infermedica.com — marketing homepage layout' },
-      { src: '/images/infermedica2.jpg', alt: 'Infermedica.com — product and content page' },
-    ],
-    description:
-      'Infermedica\'s main website, migrated from a legacy static codebase to a modern headless CMS architecture. Built with Nuxt 3 and Storyblok, it relies on Incremental Static Generation (ISG) and i18n to deliver sub-second Core Web Vitals and scalable multilingual content.',
-    techStack: [
-      'TypeScript',
-      'Vue',
-      'Nuxt.js',
-      'Pinia',
-      'Vite',
-      'Vitest',
-      'Cypress',
-      'Sass',
-      'Docker',
-      'CI/CD',
-      'i18n',
-      'Storyblok CMS',
-      'Incremental Static Generation (ISG)',
-    ],
-  },
-  {
     name: 'RemoEdu.pl',
     size: 'lg',
     images: [
@@ -156,6 +131,38 @@ const projects: Project[] = [
       'CI/CD',
       'Supabase',
       'Stripe',
+    ],
+  },
+  {
+    name: 'RemoEdu Recommendation Engine',
+    size: 'sm',
+    description:
+      'Complementary service to the RemoEdu.pl platform, built as a standalone Python RAG microservice that recommends primary school worksheets aligned with the official Polish curriculum. It uses metadata-filtered dual retrieval to match teacher queries against both existing classroom materials and curriculum standards, keeping AI workloads and vector storage completely decoupled from the main application.',
+    techStack: ['Python', 'FastAPI', 'LlamaIndex', 'PostgreSQL', 'pgvector', 'Pydantic', 'SQLAlchemy', 'Docker'],
+  },
+  {
+    name: 'Infermedica.com',
+    size: 'lg',
+    images: [
+      { src: '/images/infermedica1.jpg', alt: 'Infermedica.com — marketing homepage layout' },
+      { src: '/images/infermedica2.jpg', alt: 'Infermedica.com — product and content page' },
+    ],
+    description:
+      'Infermedica\'s main website, migrated from a legacy static codebase to a modern headless CMS architecture. Built with Nuxt 3 and Storyblok, it relies on Incremental Static Generation (ISG) and i18n to deliver sub-second Core Web Vitals and scalable multilingual content.',
+    techStack: [
+      'TypeScript',
+      'Vue',
+      'Nuxt.js',
+      'Pinia',
+      'Vite',
+      'Vitest',
+      'Cypress',
+      'Sass',
+      'Docker',
+      'CI/CD',
+      'i18n',
+      'Storyblok CMS',
+      'Incremental Static Generation (ISG)',
     ],
   },
 ]
