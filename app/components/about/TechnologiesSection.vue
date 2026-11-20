@@ -26,6 +26,7 @@ const groups: TechnologyGroup[] = [
       'Svelte',
       'SvelteKit',
       'Tailwind CSS',
+      'three.js',
       'Sass',
       'Less',
       'RxJS',
